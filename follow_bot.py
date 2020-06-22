@@ -15,18 +15,18 @@ username = wait.until(EC.presence_of_element_located((By.ID, "login_field")))
 password = wait.until(EC.presence_of_element_located((By.ID, "password")))
 
 # password and username need to go into these values
-username.send_keys("Username")
-password.send_keys("Password")
+username.send_keys("username")
+password.send_keys("password")
 
 # Clicking the sign in button
 login_form = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@value='Sign in']")))
 login_form.click()
 
 # Go to the followers tab
-prepend = ["BaseMax"]
+prepend = ["Anteste", "andrewsyc"]
 
 for user in prepend:
-    for t in range(19, 100):
+    for t in range(1, 50):
         string = "https://github.com/{}?page={}&tab=followers".format(user, t)
         driver.get(string)
         time.sleep(1)

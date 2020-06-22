@@ -4,8 +4,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 # Initializing the headless chrome
 driver = webdriver.Chrome()
@@ -17,24 +15,25 @@ username = wait.until(EC.presence_of_element_located((By.ID, "login_field")))
 password = wait.until(EC.presence_of_element_located((By.ID, "password")))
 
 # password and username need to go into these values
-username.send_keys("Username")
-password.send_keys("Password")
+username.send_keys("username")
+password.send_keys("password")
 
 # Clicking the sign in button
 login_form = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@value='Sign in']")))
 login_form.click()
 
-prepend = ["your_username"]
+
+prepend = ["prot0-root"]
 
 
 for user in prepend:
     for i in range(0, 200):
         for t in range(1, 100):
-            string = "https://github.com/{}/following?page={}".format(user, t)
+            string = "https://github.com/{}?tab=following&page={}".format(user, t)
             driver.get(string)
             time.sleep(1)
 
-            follow_button = driver.find_elements_by_xpath("//button[@aria-label='Unfollow this person']")
+            follow_button = driver.find_elements_by_xpath("//input[@aria-label='Unfollow this person']")
 
             # time.sleep(1)
             # print len(follow_button)
