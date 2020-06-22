@@ -55,7 +55,7 @@ with open(filename, 'r+') as f:
     print("Starting to Follow Users... This WILL Take a while, we must avoid being rate-limited!")
     for user in tqdm.tqdm(obj, ncols=35, smoothing=True, bar_format='[PROGRESS] {n_fmt}/{total_fmt} | {bar}'):
         while True:
-            time.sleep(5)
+            time.sleep(2)
             res = sesh.put('https://api.github.com/user/following/' + user)
             if res.status_code != 204:
                 print(res.status_code)
