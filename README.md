@@ -49,4 +49,4 @@ Somewhere, I read:
 
 Might be true, might be not 🤷‍.
 
-Rewritten to use GitHub API from Selenium by [M4cs](https://github.com/M4cs)
+Rewritten to use GitHub API from Selenium by [M4cs](https://github.com/M4cs) .
