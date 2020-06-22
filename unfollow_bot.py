@@ -1,56 +1,30 @@
+import requests
+import json
+import argparse
+import tqdm
 import time
-import sys
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-reload(sys)
-sys.setdefaultencoding('utf-8')
+from base64 import b64encode
+from datetime import datetime
 
-# Initializing the headless chrome
-driver = webdriver.Chrome()
-driver.get("https://github.com/login")
-wait = WebDriverWait(driver, 10)
+parser = argparse.ArgumentParser()
+parser.add_argument('-t', '--token', help="Your GitHub Personal Access Token", required=True)
+parser.add_argument('-m', '--my-username', help="Your GitHub Username", required=True)
+parser.add_argument('-f', '--file', help="Followers File to Unfollow", required=True)
+args = parser.parse_args()
 
-# Locating username and password field
-username = wait.until(EC.presence_of_element_located((By.ID, "login_field")))
-password = wait.until(EC.presence_of_element_located((By.ID, "password")))
-
-# password and username need to go into these values
-username.send_keys("Username")
-password.send_keys("Password")
-
-# Clicking the sign in button
-login_form = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@value='Sign in']")))
-login_form.click()
-
-prepend = ["your_username"]
-
-
-for user in prepend:
-    for i in range(0, 200):
-        for t in range(1, 100):
-            string = "https://github.com/{}/following?page={}".format(user, t)
-            driver.get(string)
-            time.sleep(1)
-
-            follow_button = driver.find_elements_by_xpath("//button[@aria-label='Unfollow this person']")
-
-            # time.sleep(1)
-            # print len(follow_button)
-            try:
-                for i in follow_button:
-                    i.submit()
-            except:
-                pass
-            time.sleep(1)
-
-
-
-driver.close()
-
-time.sleep(3)
-
-time.sleep(3)
-
-driver.close()
+HEADERS = {"Authorization": "Basic " + b64encode(str(args.my_username + ":" + args.token).encode('utf-8')).decode('utf-8')}
+sesh = requests.session()
+sesh.headers.update(HEADERS)
+with open(args.file, 'r+') as f:
+    obj = json.load(f)
+    print("Unfollowing Users... This WILL take a while!")
+    for user in tqdm.tqdm(obj, ncols=35, smoothing=True, bar_format='[PROGRESS] {n_fmt}/{total_fmt} | {bar}'):
+        while True:
+            time.sleep(5)
+            res = sesh.delete('https://api.github.com/user/following/' + user)
+            if res.status_code != 204:
+                print(res.status_code)
+                print("We may have been rate-limited, waiting until it stops!")
+                time.sleep(60)
+            else:
+                break

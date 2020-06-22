@@ -1,17 +1,40 @@
-# GitHub-Follow-Bot
+# GitHub Follow Bot
 
-A bot done with python to follow and unfollow users in GitHub.
+Started as a fork, completely changed around code. **I do not recommend you use this a lot, you may get banned from GitHub but I'm not sure! This was just a PoC**
 
+## Installing
 
-## How to use:
+```
+pip install -r requirements.txt
+```
 
-- Fill your GitHub `username` and `password` in the space provided
-- Fill the person's GitHub `username` whose followers following you want to follow(That might be a little confusing). Basically, select a person, the person will have some followers, and it will follow all of his followers.
-- you need need selenium so do this command `pip install selenium`
-- then run the python script `python follow_bot.py` or `python unfollow_bot.py`
+## How to Use
 
+### Get PAT:
+
+https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line **READ HERE**
+
+Make sure to enable the `user` scope and all subscopes inside of that permission!
+
+#### To Follow:
+
+```
+python follow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -u <TARGET_TO_GRAB_FOLLOWERS_FROM> # To follow and generate a new followers file.
+
+python follow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> # Follow users from a pre-generated file
+
+python follow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -mf 1000 # Cap followers to 1000
+```
+
+#### To Unfollow:
+
+```
+python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> # Unfollow users from file.
+```
 
 ## Why I did this?
+
+Selenium is slow and ugly, APIs are nice to use and we can let this run in the background. Also allows for less resources to be used + storing files of who you followed so you don't lose people you really do want to follow!
 
 Somewhere, I read:
 - One in ten people you follow will follow you back.
@@ -19,3 +42,5 @@ Somewhere, I read:
 - One in thousand people you follow will fork your repos.
 
 Might be true, might be not 🤷‍.
+
+Rewritten to use GitHub API from Selenium by [M4cs](https://github.com/M4cs)
