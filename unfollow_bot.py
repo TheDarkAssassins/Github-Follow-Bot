@@ -1,31 +1,28 @@
-from selenium import webdriver
 import time
 import sys
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+# Initializing the headless chrome
+driver = webdriver.Chrome()
+driver.get("https://github.com/login")
+wait = WebDriverWait(driver, 10)
 
-
-
-#Firefox used
-driver = webdriver.Firefox()
-# base url
-driver.get("http://github.com/login")
-
-username = driver.find_element_by_id("login_field")
-password = driver.find_element_by_id("password")
+# Locating username and password field
+username = wait.until(EC.presence_of_element_located((By.ID, "login_field")))
+password = wait.until(EC.presence_of_element_located((By.ID, "password")))
 
 # password and username need to go into these values
-username.send_keys("username")
-time.sleep(1)
-password.send_keys("password")
-time.sleep(1)
+username.send_keys("Username")
+password.send_keys("Password")
 
-
-login_form = driver.find_element_by_xpath("//input[@value='Sign in']")
-time.sleep(1)
+# Clicking the sign in button
+login_form = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@value='Sign in']")))
 login_form.click()
-time.sleep(1)
 
 prepend = ["your_username"]
 
