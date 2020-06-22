@@ -10,6 +10,12 @@ pip install -r requirements.txt
 
 ## How to Use
 
+### Get PAT:
+
+https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line **READ HERE**
+
+Make sure to enable the `user` scope and all subscopes inside of that permission!
+
 #### To Follow:
 
 ```
@@ -42,3 +48,5 @@ Somewhere, I read:
 - One in thousand people you follow will fork your repos.
 
 Might be true, might be not 🤷‍.
+
+Rewritten to use GitHub API from Selenium by [M4cs](https://github.com/M4cs)
