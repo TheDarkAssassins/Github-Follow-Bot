@@ -29,13 +29,13 @@ python follow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -mf 1000 # Ca
 #### To Unfollow:
 
 ```
-python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> # Unfollow users from file
-
-python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> -mu 100 # Unfollow users from file but cap at 100
-
 python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -a # Unfollow Everybody
 
 python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -a -mu 40# Unfollow Everybody Cap at 40
+
+python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> # Unfollow users from file
+
+python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> -mu 100 # Unfollow users from file but cap at 100
 ```
 
 ## Why I did this?
@@ -49,4 +49,4 @@ Somewhere, I read:
 
 Might be true, might be not 🤷‍.
 
-Rewritten to use GitHub API from Selenium by [M4cs](https://github.com/M4cs) .
+Rewritten to use GitHub API from Selenium by [M4cs](https://github.com/M4cs) and updated by [Anteste](https://github.com/Anteste).
