@@ -19,23 +19,23 @@ Make sure to enable the `user` scope and all subscopes inside of that permission
 #### To Follow:
 
 ```
-python follow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -u <TARGET_TO_GRAB_FOLLOWERS_FROM> # To follow and generate a new followers file
+python follow_API.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -u <TARGET_TO_GRAB_FOLLOWERS_FROM> # To follow and generate a new followers file
 
-python follow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> # Follow users from a pre-generated file
+python follow_API.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> # Follow users from a pre-generated file
 
-python follow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -mf 1000 # Cap followers to 1000
+python follow_API.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -mf 1000 # Cap followers to 1000
 ```
 
 #### To Unfollow:
 
 ```
-python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -a # Unfollow Everybody
+python unfollow_API.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -a # Unfollow Everybody
 
-python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -a -mu 40# Unfollow Everybody Cap at 40
+python unfollow_API.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -a -mu 40# Unfollow Everybody Cap at 40
 
-python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> # Unfollow users from file
+python unfollow_API.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> # Unfollow users from file
 
-python unfollow_bot.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> -mu 100 # Unfollow users from file but cap at 100
+python unfollow_API.py -t <PERSONAL_ACCESS_TOKEN> -m <YOUR_USERNAME> -f <FILENAME> -mu 100 # Unfollow users from file but cap at 100
 ```
 
 ## Why I did this?
