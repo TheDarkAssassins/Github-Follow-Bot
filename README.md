@@ -1,7 +1,5 @@
 # GitHub Follow Bot
 
-Started as a fork, completely changed around code. **I do not recommend you use this a lot, you may get banned from GitHub but I'm not sure! This was just a PoC**
-
 ## Installing
 
 ```
